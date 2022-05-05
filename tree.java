@@ -28,6 +28,16 @@ public class tree {
         s+=1;
         return s;
     }
+    public static int max(Node node) {
+        int max = 0;
+        int cmax = 0;
+        for(Node child:node.child){
+            cmax = max(child);
+            max = Math.max(cmax, max);
+        }
+        max = Math.max(node.data,max);
+        return max;
+    }
     public static void main(String[] args) {
         int arr[] = {10,20,50,-1,60,-1,-1,30};
         Stack<Node> st = new Stack<>();
@@ -48,6 +58,7 @@ public class tree {
         }
         display(root);
         System.out.println(size(root));
+        System.out.println(max(root));
         
     }
 }
