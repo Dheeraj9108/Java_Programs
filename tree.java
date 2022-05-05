@@ -7,6 +7,7 @@ public class tree {
         int data;
         ArrayList<Node> child = new ArrayList<>();
     }
+    //display func
     public static void display(Node node) {
         String str = node.data+"->";
         for(Node child:node.child){
@@ -17,6 +18,7 @@ public class tree {
             display(child);
         }
     }
+    //size func 
     public static int size(Node node) {
         int s = 0;
         for(Node child:node.child){
