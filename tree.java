@@ -7,10 +7,29 @@ public class tree {
         int data;
         ArrayList<Node> child = new ArrayList<>();
     }
+    public static void display(Node node) {
+        String str = node.data+"->";
+        for(Node child:node.child){
+            str+=child.data+",";
+        }
+        System.out.println(str);
+        for(Node child:node.child){
+            display(child);
+        }
+    }
+    public static int size(Node node) {
+        int s = 0;
+        for(Node child:node.child){
+            int cs = size(child);
+            s+=cs;
+        }
+        s+=1;
+        return s;
+    }
     public static void main(String[] args) {
-        int arr[] = {10,20,50,-1,60,-1,-1};
+        int arr[] = {10,20,50,-1,60,-1,-1,30};
         Stack<Node> st = new Stack<>();
-        Node root;
+        Node root =null;
         for(int i =0;i<arr.length;i++){
             if(arr[i] == -1){
                 st.pop();
@@ -25,5 +44,8 @@ public class tree {
                 st.push(t);
             }
         }
+        display(root);
+        System.out.println(size(root));
+        
     }
 }
